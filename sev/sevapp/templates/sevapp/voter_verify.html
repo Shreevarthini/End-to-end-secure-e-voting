@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<title>Vote Here</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+ <!-- <link href="https://fonts.googleapis.com/css?family=Montserrat|Russo+One" rel="stylesheet"> -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css2?family=Gotu&display=swap" rel="stylesheet"> 
+	<style type="text/css">
+		.home_logo{
+			width: 80px;
+		}
+		.header{
+		  font: sans-serif;
+		  color: black;
+		  font-size: 1.3em;
+		}
+		.header-right{
+		  font: sans-serif;
+		  color: black;
+		  font-size: 1.3em;
+		}
+		.bck{
+		  font: sans-serif;
+		  color: rgb(255, 255, 255);
+		  font-size: 1.3em;
+		}
+		.nav-link{
+		  font-family: sans-serif;
+		  color: rgb(238, 238, 238);
+		  font-size: 1.2em;
+		  margin-right: 20px;
+		}
+		.footer{
+		  background-color: #c9f2cc;
+		  margin-top: 60px;
+		}
+		.footer p{
+		  font-family: 'Gotu', sans-serif;
+		  font-style: 0.5em;
+		  text-align: center;
+		}
+		.footer img{
+		  width: 1em;
+		}
+		body {
+		  background-color: rgb(255, 255, 255);
+		  /* background-color: rgb(233, 228, 250); */
+		}
+		.admin{
+		  font-family: 'Poppins', sans-serif;
+		  margin-top: 50px;
+		  margin-bottom: 30px;
+		}
+		.admin-info{
+		  font-family: 'Poppins', sans-serif;
+		  margin-top: 30px;
+		  margin-bottom: 30px;
+		}
+		.form-control{
+		  font-family: 'Poppins', sans-serif;
+		}
+		.button{
+		  padding-right: 35px;
+		  padding-left: 35px;
+		  padding-bottom: 8px;
+		  padding-top: 8px;
+		  margin-top: 40px;
+		  margin-bottom: 30px;
+		  background-color: #144969;
+		  font-size: 1.2em;
+		  font-family: serif;
+		  text-align: center;
+		  margin-right: auto;
+		  margin-left: auto;
+		  display: block;
+		}
+		p{
+		  font-family: 'Poppins';
+		}
+		.tip{
+		  color: red;
+		  font-size: 0.8em;
+		}
+		/* .btn-success {
+		 color: #fff;
+		 background-color: #28a745;
+		 border-color: #28a745;
+		} */
+	
+		.navigation_bar{
+		}
+		.navbar-toggler { 
+		  border-color: lightgreen; 
+		}
+		.navbar-toggler-icon { 
+			background-image: url( 
+			  "data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 128, 0, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E"); 
+		}
+		.bck{
+				padding-right: 35px;
+				padding-left: 35px;
+				padding-bottom: 8px;
+				padding-top: 8px;
+				/* font-size:large; */
+				font-size: 1.0em;
+				font-family: 'Poppins', sans-serif;
+		  color: white;
+		  /* margin-bottom: 5px;
+		  margin-top: 5px;
+		   */
+			}
+		.bckk{
+				padding-right: 20px;
+				padding-left: 20px;
+				padding-bottom: 4px;
+				padding-top: 4px;
+				/* font-size:large; */
+				font-size: 1.0em;
+				font-family: 'Poppins', sans-serif;
+		  color: white;
+		  margin-bottom: 5px;
+		  margin-top: 5px;
+		  /* margin-left: 10px; */
+		  
+			}
+	  </style>
+</head>
+<body>
+	<div class = "navigation_bar">
+		<nav class="navbar navbar-expand-lg nav-fixed-top " style="background-color:  #144969;">
+		  <div class="container">
+			
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav mr-auto">
+            
+            
+          </ul>
+		<ul class="navbar-nav">
+            <li class="nav-item">
+              <!-- <a class="nav-link header" href="{% url 'login' %}">Login</a> -->
+              <a class="btn btn-info btn bckk" href="{% url 'login' %}">Login</a>
+            </li>
+          </ul>
+		</div>
+	</div>
+  </nav>
+</div>
+    <div class="verify">
+    	<div class="row">
+    		<div class="col-sm-4">
+    		</div>
+    		<div class="col-sm-4">
+    			{% if ongoing == 0 %}
+    				<div class="alert alert-danger alert-dismissible">
+						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+						<strong>Not available!</strong> <br>Starting Date: {{ start }}<br>Ending Date: {{ end }}
+					</div>
+    			{% elif voted and not valid %}
+    				<div class="alert alert-danger alert-dismissible">
+						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+						<strong>Voted!</strong> You have already voted.
+					</div>
+    			{% elif not valid and error %}
+					<div class="alert alert-warning alert-dismissible">
+					    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					    <strong>Oops!</strong> The entered Aadhar number is wrong.
+					</div>
+	            {% elif verified %}
+	            	<div class="alert alert-danger alert-dismissible">
+						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+						<strong>Vote Verified!</strong> Thanks for Voting.
+					</div>
+				{% elif not verified and voted%}
+	            	<div class="alert alert-danger alert-dismissible">
+						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+						<strong>One Time Verification Exhausted!</strong> Thanks for Voting.
+					</div>
+				{% endif %}
+				<br><h3>Verify yourself with valid data</h3><br>
+    			<form enctype="multipart/form-data" method="POST">
+            		{% csrf_token %}
+            		<label for="aadhar">Aadhaar Number</label>
+            		<input id="aadhar" class="form-control" type="number" name="aadhar" placeholder="987456312789" min="100000000000" max="999999999999"><br>
+
+				<!--	<label for="phone_no">Registered Mobile Number</label>
+					<input id="phone_no" class="form-control" type="number" name="phone_no" placeholder="9999999999"><br> -->
+            		<input type="submit" name="" value="Verify" class= "btn btn-primary button"/>
+            	</form>
+    		</div>
+    		<div class="col-sm-4">
+    			
+    		</div>
+    	</div>
+    </div>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
